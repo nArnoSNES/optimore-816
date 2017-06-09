@@ -1,0 +1,23 @@
+language: c
+
+addons:
+  apt:
+    packages:
+    - libc6-dev-i386
+    - gcc-multilib
+
+before_script:
+- wget http://sourceforge.net/projects/rapideuphoria/files/Euphoria/4.0.5/euphoria_4.0.5_amd64.deb/download -O euphoria.deb
+- sudo dpkg -i euphoria.deb
+
+script: make
+
+deploy:
+  provider: releases
+  api-key:
+  - secure: "HOwA9RjL8n1QEJeZI69koDYFbWv2vA3Ww8KJZ2twGPSJXj9qp+8Il1kCKiW+8q1z1iQ8mcw+pH2I37A0g6B76P8jx9Br6mBscmFBQiQV3Y2OldIHvuNg6i3EwiTIfmA7AdkUw/r5Ycc9OpLcMhIUza+f86fRmmmx/H4K3m/e+F+FU9enwJCvxrK3iN8seVoGJkQEXWntO0B+mOY2iF6j3bkE2moMaSZg6gEDESbuikUS0aG2QHAcnsjJbQnJF/ikbpLqU07Y5jEoZG2dXV1K4d6G1MBzYVj8rE5oQ0yv1xKIRKwKZ+uJ0WfRhM06vDTp+pZyZGpuHBo2vWEqz8n4zPPds1FLEj8JCPo4M9ljHQCeiIT47SFribxd2drpuW694t558edsos8k0GrvYfMXoVM1IR6v2xdh4MsPeu+kQ6N3I+o4WnmyLMWmBcnT/e73nF4OJ7idtBeqqpNAwDvNDEFOVqSHtzu9PJqFv+gKJ9BIS6fNsz2S07rQKdWdSA/JhzV6jBD0TmCyb0YeDwdcupoALgq2l8EUoPtiv+Rna/7SJtcl9nHYP5ot6gR9JQdQ/0sNzdrJ6+zX0Ocs98gBzsY4t/F+4QUzIcXhy+J6L6ADXY8EKjtSwHz8PafWft0l0RxNuFydioeNjgtTfwbgBZ2fmfg+aHZaeWsuPik7eVI="
+  file: optimore-816
+  skip_cleanup: true
+  on:
+    tags: true
+
